@@ -1,7 +1,6 @@
 import DesktopNav from "@/components/nav/DesktopNav";
 import MobileNav from "@/components/nav/MobileNav";
-import Post from "@/components/post/Post";
-
+import Homee from "@/components/home/Home";
 export default function Home() {
   return (
    <div className="w-full h-screen flex ">
@@ -12,8 +11,8 @@ export default function Home() {
     </div>
 
     {/* //main content */}
-    <div className="w-full sm:w-[80%] ">
-        <Post/>
+    <div className="w-full sm:w-[80%] flex justify-center ">
+       <Homee/>
     </div>
 
     {/* //mobile navbar */}
