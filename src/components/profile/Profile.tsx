@@ -31,7 +31,9 @@ export default function Profile() {
 							<p className="mt-1 text-gray-500 ">@anshul_12</p>
 						</div>
 
-						<Button size={"lg"}>
+						<Button 
+						variant={"outline"}
+						size={"lg"}>
 							<span className="text-lg mr-2 max-sm:hidden">
 								Edit{" "}
 							</span>{" "}
