@@ -6,7 +6,7 @@ import Post from "../post/Post";
 export default function Profile() {
 	return (
 		<div className="w-full sm:w-[70%] h-screen border-r overflow-x-auto no-scrollbar">
-			<div className="w-full h-[60%] border-b">
+			<div className="w-full h-[65%] border-b">
 				{/* profile pic & backgroundImage */}
 				<div className=" w-full h-[48%] bg-gray-300 relative">
 					<img
@@ -22,7 +22,7 @@ export default function Profile() {
 				</div>
 
 				{/* profile detials */}
-				<div className="w-full h-[50% pt-[8%] px-4 ">
+				<div className="w-full min-h-[50%] pt-[8%] px-4 ">
 					<div className="flex justify-between items-center mb-4 ">
 						<div>
 							<h1 className=" font-semibold text-xl ">
@@ -31,9 +31,7 @@ export default function Profile() {
 							<p className="mt-1 text-gray-500 ">@anshul_12</p>
 						</div>
 
-						<Button 
-						variant={"outline"}
-						size={"lg"}>
+						<Button variant={"outline"} size={"lg"}>
 							<span className="text-lg mr-2 max-sm:hidden">
 								Edit{" "}
 							</span>{" "}
@@ -43,10 +41,11 @@ export default function Profile() {
 
 					<h1 className="mt-2 text-gray-500">Join on 24/04/24</h1>
 					<p>Lorem ipsum dolor sit amet.</p>
-					 
+
 					<p className="my-1">
 						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Dignissimos, ad.
+						elit. Dignissimos, ad.Lorem ipsum dolor sit, amet
+						consectetur adipisicing elit. Dignissimos, ad.
 					</p>
 
 					<div className="flex gap-4 text-gray-600 mt-2 ">

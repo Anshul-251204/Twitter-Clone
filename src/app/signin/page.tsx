@@ -7,15 +7,13 @@ import React from "react";
 export default function page() {
 	return (
 		<div className="w-full h-screen flex justify-center items-center p-4 ">
-			<div className="w-full h-[60%] sm:w-[35%] sm:h-[70%] border rounded-lg p-4 ">
-				<h1 className=" text-2xl text-center p-4">Sign Up</h1>
+			<div className="w-full h-[60%] sm:w-[35%] sm:h-[70%] border rounded-lg p-4 pt-[7%] ">
+				<h1 className=" text-2xl text-center p-4">Sign In</h1>
 
 				<form>
-					<Input className=" mb-4" placeholder="name"  />
 					<Input className=" my-4" placeholder="username" />
-					<Input className=" my-4" placeholder="Email" />
 					<Input className=" my-4" placeholder="Password" />
-					<Button className="w-full">Sign Up</Button>
+					<Button className="w-full">Sign In</Button>
 					<div className="flex my-4 items-center justify-between">
 						<div className=" border-t w-[45%]"></div>
 						<p>OR</p>
@@ -39,8 +37,8 @@ export default function page() {
 				</form>
 
 				<div className="my-4 flex">
-					<p>if your have already account </p>
-					<Link className=" text-blue-500 ml-2 " href={"signin"}>
+					<p>if you want to create a account </p>
+					<Link className=" text-blue-500 ml-2 " href={"signup"}>
 						click here
 					</Link>
 				</div>

@@ -1,5 +1,5 @@
 import { DesktopNavType } from "@/types/generalTypes";
-import { Contact, HomeIcon, Plus, PlusCircle, Search, Settings, Twitter } from "lucide-react";
+import { Contact, HomeIcon, LogIn, PlusCircle, Search, Settings, Twitter } from "lucide-react";
 import Link from "next/link";
 import { ModeToggle } from "../ModeToggle";
 
@@ -9,6 +9,7 @@ const DesktopNavBar: DesktopNavType[] = [
 	{ icon: <Contact />, path: "/profile", text: "Profile" },
 	{ icon: <PlusCircle />, path: "/addpost", text: "Create" },
 	{ icon: <Settings />, path: "/setting", text: "Settings" },
+	{ icon: <LogIn />, path: "/signin", text: "Sign In" },
 ];
 
 export default function DesktopNav() {
