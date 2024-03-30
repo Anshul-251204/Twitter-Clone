@@ -6,6 +6,6 @@ export type SignupRequestBody = {
 }
 
 export type SigninRequestBody = {
-    email_or_username :string,
+    username :string,
     password: string;
 }
