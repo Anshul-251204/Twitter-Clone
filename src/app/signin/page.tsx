@@ -35,31 +35,6 @@ export default function page() {
 		}
 	};
 
-	// const signInHandler = async (
-	// 	e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	// ) => {
-	// 	e.preventDefault();
-	// 	try {
-	// 		 const  loginPromise = async() => {
-	// 			await axios.post("/api/auth/signin", userData, {
-	// 				withCredentials: true,
-	// 			});
-	// 		}
-
-	// 		const res = loginPromise();
-
-	// 		toast.promise(res, {
-	// 			loading: "wait few seconds...",
-	// 			success: "Login successfully",
-	// 			error: "Error while login...",
-	// 		});
-
-	// 		router.replace("/");
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// };
-
 	return (
 		<div className="w-full h-screen flex justify-center items-center p-4 ">
 			<div className="w-full h-[60%] sm:w-[35%] sm:h-[70%] border rounded-lg p-4 pt-[7%] ">
