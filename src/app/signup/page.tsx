@@ -5,33 +5,29 @@ import { Input } from "@/components/ui/input";
 import { SignupRequestBody } from "@/types/res&reqTypes";
 import { Github } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 export default function page() {
 	const router = useRouter();
 
-	const [userData, setUserData] = useState<SignupRequestBody>({
-		name: "",
-		email: "",
-		password: "",
-		username: "",
-	});
+	const { register, handleSubmit } = useForm<SignupRequestBody>();
 
-	const signUpHandler = async (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		e.preventDefault();
+	const onSubmit: SubmitHandler<SignupRequestBody> = async (data) => {
 		try {
-			const res = await axios.post("/api/auth/signup", userData, {
-				withCredentials: true,
-			});
-	
-			router.replace("/signin");
-		} catch (error) {
-			console.log(error);
-			
+			const res = await axios.post(
+				`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/signup`,
+				data,
+				{ withCredentials: true }
+			);
+
+			toast.success(res.data.message);
+			router.replace("/");
+		} catch (error: any) {
+			toast.error(error.response.data.message);
 		}
 	};
 	return (
@@ -39,39 +35,30 @@ export default function page() {
 			<div className="w-full h-[60%] sm:w-[35%] sm:h-[70%] border rounded-lg p-4 ">
 				<h1 className=" text-2xl text-center p-4">Sign Up</h1>
 
-				<form>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<Input
-						onChange={(e) => {
-							setUserData({ ...userData, name: e.target.value });
-						}}
+						{...register("name")}
 						className=" mb-4"
 						placeholder="name"
 					/>
 					<Input
-						onChange={(e) => {
-							setUserData({ ...userData, username: e.target.value });
-						}}
+						{...register("username")}
 						className=" my-4"
 						placeholder="username"
 					/>
 					<Input
-						onChange={(e) => {
-							setUserData({ ...userData, email: e.target.value });
-						}}
+						{...register("email")}
 						className=" my-4"
 						placeholder="Email"
 					/>
 					<Input
-						onChange={(e) => {
-							setUserData({ ...userData, password: e.target.value });
-						}}
+						{...register("password")}
 						className=" my-4"
 						placeholder="Password"
 					/>
 
 					<Button
 						type="submit"
-						onClick={signUpHandler}
 						className="w-full"
 					>
 						Sign Up
