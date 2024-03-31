@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
 
 export default function page() {
 	const router = useRouter();
@@ -16,10 +17,8 @@ export default function page() {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		formState: { errors },
 	} = useForm<SigninRequestBody>();
-
 	const onSubmit: SubmitHandler<SigninRequestBody> = async (data) => {
 		try {
 			const res = await axios.post(
@@ -27,11 +26,11 @@ export default function page() {
 				data,
 				{ withCredentials: true }
 			);
-			
+
 			toast.success(res.data.message);
-			router.replace("/")
-		} catch (error :any) {
-			toast.error(error.response.data.message)
+			router.replace("/");
+		} catch (error: any) {
+			toast.error(error.response.data.message);
 		}
 	};
 
