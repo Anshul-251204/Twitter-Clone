@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import toast from "react-hot-toast";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useSetRecoilState } from "recoil";
 
 export default function page() {
 	const router = useRouter();
@@ -26,8 +25,11 @@ export default function page() {
 				data,
 				{ withCredentials: true }
 			);
-
+			
+			localStorage.setItem("curr-user",JSON.stringify(res.data.data))
+			
 			toast.success(res.data.message);
+
 			router.replace("/");
 		} catch (error: any) {
 			toast.error(error.response.data.message);
@@ -42,31 +44,15 @@ export default function page() {
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<Input
 						{...register("username")}
-						// onChange={(e) =>
-						// 	setUserData({
-						// 		...userData,
-						// 		email_or_username: e.target.value,
-						// 	})
-						// }
 						className=" my-4"
 						placeholder="username"
 					/>
 					<Input
 						{...register("password")}
-						// onChange={(e) =>
-						// 	setUserData({
-						// 		...userData,
-						// 		password: e.target.value,
-						// 	})
-						// }
 						className=" my-4"
 						placeholder="Password"
 					/>
-					<Button
-						type="submit"
-						// onClick={signInHandler}
-						className="w-full"
-					>
+					<Button type="submit" className="w-full">
 						Sign In
 					</Button>
 					<div className="flex my-4 items-center justify-between">

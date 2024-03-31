@@ -27,3 +27,22 @@ export type PostType = {
 	published:boolean;
     ownerId:string
 };
+
+export type UserType = {
+	id: string
+	name: string
+	username: string
+	email: string
+	password: string
+	avatar: {
+		url: string
+		public_id: string
+	};
+	tagList: string;
+	bio: string
+	private: boolean;
+	blueTick: boolean;
+	createdAt: Date;
+	updatedAt: Date;
+	accessToken: string
+};

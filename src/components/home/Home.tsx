@@ -17,7 +17,7 @@ export default function Homee() {
 			);
  			setPosts(res.data.data);
 		};
-
+		
 		fetchPosts();
 	}, []);
 

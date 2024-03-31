@@ -5,8 +5,7 @@ import { PostType } from "@/types/generalTypes";
 
 export default function Post({ post }: { post: PostType }) {
 	const avatar = post?.owner?.avatar?.url;
-	console.log(avatar);
-
+	
 	return (
 		<div className="w-full h-fit  ">
 			<Link
