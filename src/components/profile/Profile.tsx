@@ -5,10 +5,9 @@ import Post from "../post/Post";
 import { list } from "postcss";
 import { PostType } from "@/types/generalTypes";
 
-export default function Profile({data}:any) {
+export default function Profile({ data }: any) {
+	const joiningData: Date = new Date(data?.createdAt);
 
-	const joiningData:Date = new Date(data?.createdAt);
-	
 	return (
 		<div className="w-full sm:w-[70%] h-screen  border-r overflow-x-auto no-scrollbar">
 			<div className="w-full h-[65%] border-b">
@@ -65,13 +64,24 @@ export default function Profile({data}:any) {
 				</div>
 			</div>
 
-
 			<div className=" w-full p-4 min-h-[35%]">
-						{
-							data.posts.map((post:PostType, idx:number)=> {
-								return (<Post key={idx} post={post} />);
-							})
-						}
+				{data.posts.map((post: PostType, idx: number) => {
+					return (
+						<Post
+							key={idx}
+							post={{
+								...post,
+								owner: {
+									username: data.username,
+									avatar: {
+										url: data?.avatar.url,
+										public_id: "",
+									},
+								},
+							}}
+						/>
+					);
+				})}
 			</div>
 		</div>
 	);
