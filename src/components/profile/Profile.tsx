@@ -2,10 +2,15 @@ import React from "react";
 import { Button } from "../ui/button";
 import { Edit } from "lucide-react";
 import Post from "../post/Post";
+import { list } from "postcss";
+import { PostType } from "@/types/generalTypes";
 
-export default function Profile() {
+export default function Profile({data}:any) {
+
+	const joiningData:Date = new Date(data?.createdAt);
+	
 	return (
-		<div className="w-full sm:w-[70%] h-screen border-r overflow-x-auto no-scrollbar">
+		<div className="w-full sm:w-[70%] h-screen  border-r overflow-x-auto no-scrollbar">
 			<div className="w-full h-[65%] border-b">
 				{/* profile pic & backgroundImage */}
 				<div className=" w-full h-[48%] bg-gray-300 relative">
@@ -16,19 +21,25 @@ export default function Profile() {
 					/>
 					<img
 						className="h-[100px] w-[100px] top-[70%] left-[4%] sm:h-[180px] sm:w-[180px] object-cover rounded-full absolute sm:top-[50%] sm:left-[2%] border-foreground  "
-						src="https://plus.unsplash.com/premium_photo-1710294627866-6914a34622c8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
+						src={
+							data.avatar?.url
+								? data.avatar.url
+								: "https://plus.unsplash.com/premium_photo-1710294627866-6914a34622c8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8"
+						}
 						alt=""
 					/>
 				</div>
 
 				{/* profile detials */}
-				<div className="w-full min-h-[50%] pt-[8%] px-4 ">
+				<div className="w-full max-h-[50%] pt-[8%] px-4 ">
 					<div className="flex justify-between items-center mb-4 ">
 						<div>
 							<h1 className=" font-semibold text-xl ">
-								Anshul choure
+								{data?.name}
 							</h1>
-							<p className="mt-1 text-gray-500 ">@anshul_12</p>
+							<p className="mt-1 text-gray-500 ">
+								@{data?.username}
+							</p>
 						</div>
 
 						<Button variant={"outline"} size={"lg"}>
@@ -39,28 +50,28 @@ export default function Profile() {
 						</Button>
 					</div>
 
-					<h1 className="mt-2 text-gray-500">Join on 24/04/24</h1>
-					<p>Lorem ipsum dolor sit amet.</p>
-
+					<h1 className="mt-2 text-gray-500">
+						Join on {`${joiningData.toLocaleDateString()}`}
+					</h1>
+					<p>{data?.tagline}</p>
 					<p className="my-1">
-						Lorem ipsum dolor sit, amet consectetur adipisicing
-						elit. Dignissimos, ad.Lorem ipsum dolor sit, amet
-						consectetur adipisicing elit. Dignissimos, ad.
+						{data?.bio ? data.bio : `Hello i'm ${data.name}`}
 					</p>
 
 					<div className="flex gap-4 text-gray-600 mt-2 ">
-						<h1>12 following</h1>
-						<h1>9 followers</h1>
+						<h1>{`${data.friends}`} following</h1>
+						<h1>{`${data.followers}`} followers</h1>
 					</div>
 				</div>
 			</div>
 
-			{/* post */}
 
-			<div className=" w-full p-4 min-h-[40%]">
-				<Post />
-				<Post />
-				<Post />
+			<div className=" w-full p-4 min-h-[35%]">
+						{
+							data.posts.map((post:PostType, idx:number)=> {
+								return (<Post key={idx} post={post} />);
+							})
+						}
 			</div>
 		</div>
 	);
