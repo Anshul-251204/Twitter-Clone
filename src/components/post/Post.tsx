@@ -9,7 +9,7 @@ export default function Post({ post }: { post: PostType }) {
 	return (
 		<div className="w-full h-fit  ">
 			<Link
-				href={"/profile"}
+				href={`/profile/${post.owner.username}`}
 				className=" w-ful h-fit p-2 flex gap-4 items-center border rounded-lg max-sm:rounded-none "
 			>
 				<div className=" w-[40px] h-[40px] bg-white rounded-full ">
